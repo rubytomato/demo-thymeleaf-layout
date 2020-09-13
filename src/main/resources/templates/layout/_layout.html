@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" th:href="@{/bower_components/bootstrap/dist/css/bootstrap.min.css}">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" th:href="@{/bower_components/font-awesome/css/font-awesome.min.css}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" th:href="@{/bower_components/Ionicons/css/ionicons.min.css}">
+  <!-- Theme style -->
+  <link rel="stylesheet" th:href="@{/adminlte/css/AdminLTE.min.css}">
+  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect. -->
+  <link rel="stylesheet" th:href="@{/adminlte/css/skins/skin-blue-light.min.css}">
+  <!--/*  Each token will be replaced by their respective titles in the resulting page. */-->
+  <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Thymeleaf Layout</title>
+</head>
+<body class="hold-transition skin-blue-light sidebar-mini">
+<div class="wrapper">
+  <div th:replace="layout/header :: header">layout header</div>
+  <div th:replace="layout/navbar :: navbar">layout navbar</div>
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <div layout:fragment="content">
+      main content
+    </div>
+  </div>
+  <!-- /.content-wrapper -->
+  <div th:replace="layout/footer :: footer">layout footer</div>
+</div>
+<!-- ./wrapper -->
+<!-- REQUIRED JS SCRIPTS -->
+<!-- jQuery 3 -->
+<script th:src="@{/bower_components/jquery/dist/jquery.min.js}"></script>
+<!-- Bootstrap 3.3.7 -->
+<script th:src="@{/bower_components/bootstrap/dist/js/bootstrap.min.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{/adminlte/js/adminlte.min.js}"></script>
+<!-- app -->
+<script th:src="@{/app/js/main.js}"></script>
+<!-- master -->
+<script th:src="@{/app/js/master.js}"></script>
+</body>
+</html>

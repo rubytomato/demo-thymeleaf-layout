@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+<footer class="main-footer" th:fragment="footer">
+  <div class="pull-left hidden-xs" th:text="${#httpServletRequest.requestURI}">
+  </div>
+  <!-- To the right -->
+  <div class="pull-right hidden-xs">
+    Normal footer
+  </div>
+  <!-- Default to the left -->
+  <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
+</footer>
+</body>
+</html>
