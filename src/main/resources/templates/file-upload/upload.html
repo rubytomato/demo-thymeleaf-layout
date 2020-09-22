@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/_layout}">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="#{file.upload.upload.title}"></title>
+</head>
+<body>
+<div layout:fragment="content" class="fragment-master">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1 th:inline="text">
+      [[#{file.upload.upload.title}]]
+      <small>Optional description</small>
+    </h1>
+  </section>
+  <!-- Main content -->
+  <section class="content container-fluid col-xs-12" style="float: left;">
+    <!-- error message -->
+    <div class="feedbackContainer">
+      <div class="messagePanel" th:if="${errorMessage != null}">
+        <div>
+          <div>
+            <div class="feedback-message box box-solid box-danger">
+              <div class="box-header">
+                <a class="box-title" href="javascript:;">
+                  <b class="box-title" th:text="${errorMessage}"></b>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- error message -->
+    <div class="row">
+      <div class="col-md-12">
+        <!-- box -->
+        <div class="box box-primary">
+          <!-- header -->
+          <div class="box-header with-border">
+            <h3 class="box-title">File uploaded</h3>
+          </div>
+          <!-- header -->
+          <!-- body -->
+          <div class="box-body">
+            <div class="form-horizontal">
+              <div class="form-group col-sm-12">
+                <div class="col-sm-3 control-label">
+                  <div>ファイル名</div>
+                </div>
+                <div class="col-sm-9">
+                  <div class="form-control" th:text="${result.fileName}"></div>
+                </div>
+              </div>
+              <div class="form-group col-sm-12">
+                <div class="col-sm-3 control-label">
+                  <div>取り込み件数</div>
+                </div>
+                <div class="col-sm-9">
+                  <div th:text="${result.processingResult}"></div>
+                </div>
+              </div>
+              <div class="form-group col-sm-12">
+                <div class="col-sm-3  control-label">
+                  <div>取り込み件数</div>
+                </div>
+                <div class="col-sm-9">
+                  <pre style="height: 300px; overflow: scroll;"><code th:text="${result.resultPrint()}"></code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- body -->
+        </div>
+        <!-- box -->
+      </div>
+      <!-- col-sm-12 -->
+    </div>
+    <!-- row -->
+  </section>
+  <!-- /.content -->
+</div>
+</body>
+</html>

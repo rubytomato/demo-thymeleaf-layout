@@ -12,23 +12,30 @@
     <section class="content-header">
       <h1 th:inline="text">
         [[${pageHeader}]]
-        <small>Optional description</small>
+        <small>インデックス</small>
       </h1>
-      <ol class="breadcrumb">
-        <li>
-          <a href="#"><i class="fa fa-dashboard"></i> Level</a>
-        </li>
-        <li class="active">
-          Here
-        </li>
-      </ol>
     </section>
 
     <!-- Main content -->
-    <section class="content container-fluid">
-      <!--------------------------
-        | Your Page Content Here |
-        -------------------------->
+    <section class="content container-fluid col-xs-12" style="float: left;">
+      <div class="box boxed-table">
+        <!-- ヘッダー -->
+        <div class="box-header">
+          <div>ヘッダー</div>
+        </div>
+        <!-- ヘッダー -->
+        <!-- ボディ -->
+        <div class="box-body no-padding">
+          <ul>
+            <li th:text="${@environment.getProperty('server.servlet.context-path')}"></li>
+          </ul>
+        </div>
+        <!-- ボディ -->
+        <!-- フッター -->
+        <div class="box-footer">
+        </div>
+        <!-- フッター -->
+      </div>
     </section>
     <!-- /.content -->
   </div>

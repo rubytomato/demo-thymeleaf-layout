@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/_layout}">
+<head>
+  <meta charset="UTF-8">
+  <title>Apple</title>
+</head>
+<body>
+<div layout:fragment="content" class="fragment-apple">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1 th:inline="text">
+      [[${pageHeader}]]
+      <small>タブサンプル</small>
+    </h1>
+  </section>
+
+  <!-- Main content -->
+  <section class="content container-fluid col-xs-12" style="float: left;">
+    <div class="nav-tabs-custom">
+      <!-- tabs -->
+      <ul class="nav nav-tabs">
+        <li class="tab0 active">
+          <a class="tab-label" href="#">基本情報</a>
+        </li>
+        <li class="tab1">
+          <a class="tab-label" href="#">プロジェクション</a>
+        </li>
+      </ul>
+      <!-- tabs -->
+      <!-- tab content -->
+      <div class="tab-content">
+        <div class="tab-pane active">
+          <div class="row">
+            <div class="col-md-12">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- tab content -->
+    </div>
+    <!-- option -->
+    <div class="options-container">
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title">オプション</h3>
+        </div>
+        <div class="box-body">
+          <div>オプション ボディ</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-button-bar">
+      <span class="button-group">
+        <a class="btn btn-default" href="javascript:;">戻る</a>
+      </span>
+      <a class="btn btn-info" href="javascript:;">変更のプレビュー</a>
+      <a class="btn btn-primary" href="javascript:;">保存</a>
+      <a class="btn btn-default pull-right" href="javascript:;">RAWデータの編集</a>
+    </div>
+
+  </section>
+  <!-- /.content -->
+</div>
+</body>
+</html>

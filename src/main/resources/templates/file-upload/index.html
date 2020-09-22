@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/_layout}">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="#{file.upload.index.title}"></title>
+</head>
+<body>
+<div layout:fragment="content" class="fragment-master">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1 th:inline="text">
+      [[#{file.upload.index.title}]]
+      <small>Optional description</small>
+    </h1>
+  </section>
+  <!-- Main content -->
+  <section class="content container-fluid col-xs-12" style="float: left;">
+    <div class="feedbackContainer">
+      <div class="messagePanel" style="display: none;">
+        <div>
+          <div>
+            <div class="feedback-message box box-solid box-danger">
+              <div class="box-header">
+                <a class="box-title" href="javascript:;">
+                  <b class="box-title"></b>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <!-- box -->
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 class="box-title">File upload</h3>
+          </div>
+          <!-- file-upload form -->
+          <form role="form" th:action="@{/file-upload/upload}" th:object="${fileUploadForm}" method="post" enctype="multipart/form-data" class="file-upload">
+            <div class="box-body">
+              <div class="form-horizontal">
+                <div class="form-group col-sm-12">
+                  <div class="row">
+                    <div class="col-sm-3 control-label">
+                      <label for="fileType">file type select</label>
+                    </div>
+                    <div class="col-sm-9">
+                      <select class="form-control" th:field="*{fileType}" id="fileType" required>
+                        <option th:each="list : ${fileTypeList}" th:text="${list.value}" th:value="${list.key}"></option>
+                      </select>
+                      <span class="text-danger" th:if="${#fields.hasErrors('fileType')}" th:errors="*{fileType}"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group col-sm-12">
+                  <div class="row">
+                    <div class="col-sm-3 control-label">
+                      <label for="email">Email address</label>
+                    </div>
+                    <div class="col-sm-9">
+                      <input type="email" class="form-control" id="email" name="email" th:field="*{email}" placeholder="Enter email" required>
+                      <span class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+                    </div>
+                  </div>
+                  <div class="row">
+                  </div>
+                </div>
+                <div class="form-group col-sm-12">
+                  <div class="row">
+                    <div class="col-sm-3 control-label">
+                      <label for="password">Password</label>
+                    </div>
+                    <div class="col-sm-9">
+                      <input type="password" class="form-control" id="password" name="password" th:field="*{password}" placeholder="Password" required>
+                      <span class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group col-sm-12">
+                  <div class="row">
+                    <div class="col-sm-3 control-label">
+                      <label for="file">File input</label>
+                    </div>
+                    <div class="col-sm-9">
+                      <input type="file" id="file" name="file" accept="text/csv" required>
+                      <p class="help-block">Example block-level help text here.</p>
+                      <span class="text-danger" th:if="${#fields.hasErrors('file')}" th:errors="*{file}">></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+              <div class="col-sm-3">
+                <div class="pull-right">
+                  <button type="button" class="btn btn-info" id="fileUploadCancel">Cancel</button>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <button type="submit" class="btn btn-primary">Upload</button>
+              </div>
+              <div class="col-sm-6">
+                <button type="button" class="btn btn-primary" id="fileUploadAjax">Upload (ajax)</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- box -->
+        <div class="box">
+          <!-- header -->
+          <div class="box-header">
+            <h3 class="box-title">File upload result</h3>
+          </div>
+          <!-- header -->
+          <!-- box body -->
+          <div class="box-body">
+            <div class="form-horizontal">
+              <div class="form-group col-sm-12">
+                <div class="col-sm-3 control-label">
+                  <div>ファイル名</div>
+                </div>
+                <div class="col-sm-9">
+                  <div class="form-control fileName"></div>
+                </div>
+              </div>
+              <div class="form-group col-sm-12">
+                <div class="col-sm-3 control-label">
+                  <div>取り込み件数</div>
+                </div>
+                <div class="col-sm-9">
+                  <div class="form-control processingResult"></div>
+                </div>
+              </div>
+              <div class="form-group col-sm-12">
+                <div class="col-sm-3  control-label">
+                  <div>エラー</div>
+                </div>
+                <div class="col-sm-9">
+                  <pre class="form-control" style="height: 300px; overflow: scroll;"><code class="resultList"></code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- box body -->
+        </div>
+        <!-- box -->
+      </div>
+    </div>
+  </section>
+  <!-- /.content -->
+</div>
+</body>
+</html>

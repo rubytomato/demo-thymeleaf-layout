@@ -5,11 +5,11 @@ $(function() {
     console.log("href", $(location).attr("href"));
     console.log("origin", $(location).attr("origin"));
     let currentPage = $(location).attr("pathname");
-    if (currentPage.startsWith("/menu/apple")) {
+    if (currentPage.startsWith(window.app.context + "sub-menu/apple")) {
         $("li.apple").addClass("active");
-    } else if (currentPage.startsWith("/menu/banana")) {
+    } else if (currentPage.startsWith(window.app.context + "sub-menu/banana")) {
         $("li.banana").addClass("active");
-    } else if (currentPage.startsWith("/menu/cherry")) {
+    } else if (currentPage.startsWith(window.app.context + "sub-menu/cherry")) {
         $("li.cherry").addClass("active");
     }
 })

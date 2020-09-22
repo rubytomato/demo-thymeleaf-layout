@@ -11,12 +11,16 @@
   <link rel="stylesheet" th:href="@{/bower_components/font-awesome/css/font-awesome.min.css}">
   <!-- Ionicons -->
   <link rel="stylesheet" th:href="@{/bower_components/Ionicons/css/ionicons.min.css}">
+  <!-- dataTable -->
+  <link rel="stylesheet" th:href="@{/midpoint/css/dataTables.css}">
   <!-- Theme style -->
   <link rel="stylesheet" th:href="@{/adminlte/css/AdminLTE.min.css}">
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect. -->
   <link rel="stylesheet" th:href="@{/adminlte/css/skins/skin-blue-light.min.css}">
+  <link rel="stylesheet" th:href="@{/midpoint/css/midpoint.css}">
+  <link rel="stylesheet" th:href="@{/midpoint/css/midpoint-theme.css}">
   <!--/*  Each token will be replaced by their respective titles in the resulting page. */-->
   <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Thymeleaf Layout</title>
 </head>
@@ -41,9 +45,26 @@
 <script th:src="@{/bower_components/bootstrap/dist/js/bootstrap.min.js}"></script>
 <!-- AdminLTE App -->
 <script th:src="@{/adminlte/js/adminlte.min.js}"></script>
+<!-- midpoint -->
+<script th:src="@{/midpoint/js/bootstrap-multiselect.js}"></script>
+<script th:src="@{/midpoint/js/bootstrap-select.js}"></script>
+<script th:src="@{/midpoint/js/midpoint-theme.js}"></script>
+<script type="text/javascript" th:inline="javascript">
+/*<![CDATA[*/
+window.app = {
+  context: /*[[@{/}]]*/ '/'
+};
+
+console.log("app", window.app);
+/*]]>*/
+</script>
 <!-- app -->
 <script th:src="@{/app/js/main.js}"></script>
 <!-- master -->
 <script th:src="@{/app/js/master.js}"></script>
+<!-- table -->
+<script th:src="@{/app/js/table.js}"></script>
+<!-- file upload -->
+<script th:src="@{/app/js/file.js}"></script>
 </body>
 </html>

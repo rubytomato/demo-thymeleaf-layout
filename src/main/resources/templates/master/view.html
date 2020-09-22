@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/_layout}">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="#{__('master.' + ${value} + '.name')__}">master.select.title</title>
+</head>
+<body>
+<div layout:fragment="content" class="fragment-master">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1 th:inline="text">
+      [[#{__('master.' + ${value} + '.name')__}]]
+      <small>Optional description</small>
+    </h1>
+  </section>
+
+  <!-- Main content -->
+  <section class="content container-fluid col-xs-12" style="float: left;">
+    <div class="box box-warning">
+      <div class="box-header with-border">
+        <h3 class="box-title" th:text="#{__('master.' + ${value} + '.name')__}">マスタ名</h3>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <form role="form" class="master-select">
+          <!-- select -->
+          <div class="form-group">
+            <label th:text="#{master.select}">Master Select</label>
+            <select class="form-control">
+              <option th:each="master : ${masterList}" th:text="#{__${master.value}__}" th:value="${master.key}"
+                      th:selected="${master.key == value}"></option>
+            </select>
+          </div>
+          <div class="box-footer">
+            <button type="submit" class="btn btn-primary" th:text="#{button.search}">Search</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="box">
+      <!-- header -->
+      <div class="box-header">
+        <h3 class="box-title">検索結果</h3>
+      </div>
+      <!-- header -->
+      <!-- body -->
+      <div class="box-body">
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th th:each="header : ${body.headers}" th:text="${header.name}">header</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="data : ${body.dataset}">
+            <td th:each="header : ${body.headers}" th:text="${data.get(header.name)}"></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- body -->
+      <!-- footer -->
+      <div class="box-footer">
+        <div class="boxed-table-footer">
+          <div class="boxed-table-footer-button-toolbar">
+            <div class="btn-group">
+              <a class="btn-margin-right">
+                <button type="button" class="btn btn-default btn-sm position-relative " aria-haspopup="true"
+                        aria-expanded="false" data-toggle="" title="新規 ユーザー">
+                  <i class="fa fa-plus" style="color: green;"></i>
+                </button>
+                <ul class="dropdown-menu auto-width">
+                  <li>
+                  </li>
+                </ul>
+              </a>
+            </div>
+          </div>
+          <div class="boxed-table-footer-paging">
+            <div class="dataTables_info">2 の 1 から 2</div>
+            <div class="paging_bootstrap">
+              <ul class="pagination pagination-sm no-margin pull-right" style="margin-bottom: 0px;">
+                <li class="disabled">
+                  <a>&lt;&lt;</a>
+                </li>
+                <li class="disabled">
+                  <a>&lt;</a>
+                </li>
+                <li class="active">
+                  <a href="javascript:;">1</a>
+                </li>
+                <li class="disabled">
+                  <a>&gt;</a>
+                </li>
+                <li class="disabled">
+                  <a>&gt;&gt;</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="btn-group btn-group-sm pull-right" style="margin-left: 10px;" id="positionId">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false">
+                <i class="fa fa-cog"></i>
+              </button>
+              <ul class="dropdown-menu">
+                <li id="buttonId">
+                  <a>ページサイズ</a>
+                </li>
+                <li></li>
+              </ul>
+            </div>
+
+            <div class="popover fade left in" id="popverId">
+              <div class="arrow"></div>
+              <h3 class="popover-title">ページサイズ</h3>
+              <div class="popover-content">
+                <div>
+                  <span class="text-danger"></span>
+                  <div class="input-group">
+                    <input type="text" size="3" style="display: inline-block; width: auto;"
+                           class="form-control input-sm" value="20" id="inputId">
+                    <div class="input-group-btn" style="width: auto;">
+                      <button type="button" class="btn btn-sm btn-success" id="toggleId">
+                        <i class="fa fa-check"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- footer -->
+    </div>
+
+  </section>
+  <!-- /.content -->
+</div>
+</body>
+</html>

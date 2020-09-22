@@ -4,33 +4,32 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 @Controller
-@RequestMapping("master-list")
-public class MasterDataController {
-  @GetMapping("/select")
-  public String select(Model model) {
-    model.addAttribute("isSubMenuOpen", "false");
-    model.addAttribute("userName", "administrator");
+@RequestMapping("master")
+public class MasterController {
 
+  @GetMapping
+  public String init(Model model) {
+    return index(model);
+  }
+
+  @PostMapping
+  public String index(Model model) {
     model.addAttribute("masterList", getMasterList());
-
-    return "master-list/select";
+    return "master/index";
   }
 
   @GetMapping("/select/{value}")
   public String view(@PathVariable("value") String value, Model model) {
-    model.addAttribute("isSubMenuOpen", "false");
-    model.addAttribute("userName", "administrator");
     model.addAttribute("masterList", getMasterList());
 
     Header id = new Header("id", "number");
@@ -60,7 +59,8 @@ public class MasterDataController {
     model.addAttribute("body", body);
 
     model.addAttribute("masterName", "master." + value + ".name");
-    return "master-list/view";
+    model.addAttribute("value", value);
+    return "master/view";
   }
 
   private Map<String, String> getMasterList() {

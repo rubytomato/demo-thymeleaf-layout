@@ -4,36 +4,31 @@
       layout:decorate="~{layout/_layout}">
 <head>
   <meta charset="UTF-8">
-  <title th:text="#{__${masterName}__}">master.select.title</title>
+  <title th:text="#{master.index.title}">master.select.title</title>
 </head>
 <body>
 <div layout:fragment="content" class="fragment-master">
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1 th:inline="text">
-      [[#{__${masterName}__}]]
+      [[#{master.index.title}]]
       <small>Optional description</small>
     </h1>
-    <ol class="breadcrumb">
-      <li>
-        <a href="#"><i class="fa fa-dashboard"></i> Level</a>
-      </li>
-      <li class="active">
-        Here
-      </li>
-    </ol>
   </section>
 
   <!-- Main content -->
-  <section class="content container-fluid">
+  <section class="content container-fluid col-xs-12" style="float: left;">
     <div class="row">
       <div class="col-md-12">
+
         <div class="box box-warning">
+          <!-- with-borderでタイトルに下線 -->
           <div class="box-header with-border">
-            <h3 class="box-title">General Elements</h3>
+            <h3 class="box-title" th:text="#{master.select}"></h3>
           </div>
           <!-- /.box-header -->
           <div class="box-body">
+            <!-- master-select form -->
             <form role="form" class="master-select">
               <!-- select -->
               <div class="form-group">
@@ -47,28 +42,8 @@
               </div>
             </form>
           </div>
-          <div class="box box-warning">
-            <div class="box-header with-border">
-              <h3 class="box-title">Views</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th th:each="header : ${body.headers}" th:text="${header.name}">header</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr th:each="data : ${body.dataset}">
-                    <td th:each="header : ${body.headers}" th:text="${data.get(header.name)}"></td>
-                  </tr>
-                </tbody>
-              </table>
-
-            </div>
-          </div>
         </div>
+
       </div>
     </div>
   </section>
