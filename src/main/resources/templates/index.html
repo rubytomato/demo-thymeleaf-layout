@@ -7,37 +7,62 @@
   <title th:text="#{index.title}">Welcome</title>
 </head>
 <body>
-  <div layout:fragment="content" class="fragment-welcome">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1 th:inline="text">
-        [[${pageHeader}]]
-        <small>インデックス</small>
-      </h1>
-    </section>
+<div layout:fragment="content" class="fragment-welcome">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1 th:inline="text">
+      [[${pageHeader}]]
+      <small>インデックス</small>
+    </h1>
+  </section>
 
-    <!-- Main content -->
-    <section class="content container-fluid col-xs-12" style="float: left;">
-      <div class="box boxed-table">
-        <!-- ヘッダー -->
-        <div class="box-header">
-          <div>ヘッダー</div>
-        </div>
-        <!-- ヘッダー -->
-        <!-- ボディ -->
-        <div class="box-body no-padding">
+  <!-- Main content -->
+  <section class="content container-fluid col-xs-12" style="float: left;">
+    <div class="box boxed-table">
+      <!-- ヘッダー -->
+      <div class="box-header">
+        <div>ヘッダー</div>
+      </div>
+      <!-- ヘッダー -->
+      <!-- ボディ -->
+      <div class="box-body no-padding">
+        <div>
           <ul>
             <li th:text="${@environment.getProperty('server.servlet.context-path')}"></li>
           </ul>
         </div>
-        <!-- ボディ -->
-        <!-- フッター -->
-        <div class="box-footer">
-        </div>
-        <!-- フッター -->
       </div>
-    </section>
-    <!-- /.content -->
-  </div>
+      <div class="box-body">
+        <div class="alert alert-danger alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+          Danger alert preview. This alert is dismissable. A wonderful serenity has taken possession of my entire
+          soul, like these sweet mornings of spring which I enjoy with my whole heart.
+        </div>
+        <div class="alert alert-info alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <h4><i class="icon fa fa-info"></i> Alert!</h4>
+          Info alert preview. This alert is dismissable.
+        </div>
+        <div class="alert alert-warning alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <h4><i class="icon fa fa-warning"></i> Alert!</h4>
+          Warning alert preview. This alert is dismissable.
+        </div>
+        <div class="alert alert-success alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <h4><i class="icon fa fa-check"></i> Alert!</h4>
+          Success alert preview. This alert is dismissable.
+        </div>
+      </div>
+      <!-- ボディ -->
+      <!-- フッター -->
+      <div class="box-footer">
+      </div>
+      <!-- フッター -->
+    </div>
+  </section>
+  <!-- /.content -->
+</div>
 </body>
 </html>
