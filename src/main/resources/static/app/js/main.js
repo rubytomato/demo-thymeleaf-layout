@@ -12,4 +12,14 @@ $(function() {
     } else if (currentPage.startsWith(window.app.context + "sub-menu/cherry")) {
         $("li.cherry").addClass("active");
     }
+/*
+    $("a.page").on("click", function(event) {
+        console.log("page click", this);
+        let page = $(this).data("page");
+        console.log("page", page);
+        $("form.page-select input[name='pageNo']").val(page);
+        $("form.page-select").submit();
+        event.preventDefault();
+    });
+ */
 })

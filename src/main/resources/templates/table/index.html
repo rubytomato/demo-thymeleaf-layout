@@ -137,46 +137,64 @@
                         <button type="submit">次へ</button>
                       </form>
                     </div>
-                    <div class="boxed-table-footer-paging">
-                      <div class="dataTables_info">xxx yyy zzz</div>
 
+                    <!-- paging -->
+                    <div class="boxed-table-footer-paging">
+                      <div class="dataTables_info" th:text="${pageInfo}">2 の 1 から 2</div>
                       <div class="paging_bootstrap">
                         <ul class="pagination pagination-sm no-margin pull-right" style="margin-bottom: 0px;">
-                          <li class="disabled">
-                            <a>&lt;&lt;</a>
+                          <li th:classappend="${page.disabledFirstPageNo()} ? 'disabled'">
+                            <a class="page" href="javascript:;" th:data-page="${page.firstPageNo}">&lt;&lt;</a>
                           </li>
-                          <li class="disabled">
-                            <a>&lt;</a>
+                          <li th:classappend="${page.disabledPrevPageNo()} ? 'disabled'">
+                            <a class="page" href="javascript:;" th:data-page="${page.prevPageNo}">&lt;</a>
                           </li>
-                          <li class="active">
-                            <a>1</a>
+
+                          <li th:each="current : ${page.pageRange}" th:classappend="${page.currentPageNo == current} ? 'active'">
+                            <a class="page" href="javascript:;" th:text="${current}" th:data-page="${current}">1</a>
                           </li>
-                          <li>
-                            <a>2</a>
+
+                          <li th:classappend="${page.disabledNextPageNo()} ? 'disabled'">
+                            <a class="page" href="javascript:;" th:data-page="${page.nextPageNo}">&gt;</a>
                           </li>
-                          <li>
-                            <a>3</a>
-                          </li>
-                          <li class="disabled">
-                            <a>&gt;</a>
-                          </li>
-                          <li class="disabled">
-                            <a>&gt;&gt;</a>
+                          <li th:classappend="${page.disabledLastPageNo()} ? 'disabled'">
+                            <a class="page" href="javascript:;" th:data-page="${page.lastPageNo}">&gt;&gt;</a>
                           </li>
                         </ul>
                       </div>
 
                       <div class="btn-group btn-group-sm pull-right" style="margin-left: 10px;">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
                           <i class="fa fa-cog"></i>
                         </button>
                         <ul class="dropdown-menu">
-                          <li><a id="idc7">ページサイズ</a></li>
+                          <li><a>ページサイズ</a></li>
                           <li></li>
                         </ul>
                       </div>
-                      <div class="popover fade left in"></div>
+
+                      <div class="popover fade left in">
+                        <div class="arrow"></div>
+                        <h3 class="popover-title">ページサイズ</h3>
+                        <div class="popover-content">
+                          <div>
+                            <span class="text-danger"></span>
+                            <div class="input-group">
+                              <input type="text" size="3" style="display: inline-block; width: auto;"
+                                     class="form-control input-sm" value="20">
+                              <div class="input-group-btn" style="width: auto;">
+                                <button type="button" class="btn btn-sm btn-success">
+                                  <i class="fa fa-check"></i>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
+                    <!-- paging -->
+
                   </div>
                 </div>
                 <!-- box-footer -->

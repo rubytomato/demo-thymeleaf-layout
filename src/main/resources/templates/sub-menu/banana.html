@@ -125,26 +125,35 @@
                   </li>
                 </ul>
               </a>
+              <div>
+                <form class="page-select" th:action="@{/sub-menu/banana}" method="get">
+                  <input type="hidden" name="allDataNum" value="110" />
+                  <input type="hidden" name="pageNo" />
+                </form>
+              </div>
             </div>
           </div>
+          <!-- paging -->
           <div class="boxed-table-footer-paging">
-            <div class="dataTables_info">2 の 1 から 2</div>
+            <div class="dataTables_info" th:text="${pageInfo}">2 の 1 から 2</div>
             <div class="paging_bootstrap">
               <ul class="pagination pagination-sm no-margin pull-right" style="margin-bottom: 0px;">
-                <li class="disabled">
-                  <a>&lt;&lt;</a>
+                <li th:classappend="${page.disabledFirstPageNo()} ? 'disabled'">
+                  <a class="page" href="javascript:;" th:data-page="${page.firstPageNo}">&lt;&lt;</a>
                 </li>
-                <li class="disabled">
-                  <a>&lt;</a>
+                <li th:classappend="${page.disabledPrevPageNo()} ? 'disabled'">
+                  <a class="page" href="javascript:;" th:data-page="${page.prevPageNo}">&lt;</a>
                 </li>
-                <li class="active">
-                  <a href="javascript:;">1</a>
+
+                <li th:each="current : ${page.pageRange}" th:classappend="${page.currentPageNo == current} ? 'active'">
+                  <a class="page" href="javascript:;" th:text="${current}" th:data-page="${current}">1</a>
                 </li>
-                <li class="disabled">
-                  <a>&gt;</a>
+
+                <li th:classappend="${page.disabledNextPageNo()} ? 'disabled'">
+                  <a class="page" href="javascript:;" th:data-page="${page.nextPageNo}">&gt;</a>
                 </li>
-                <li class="disabled">
-                  <a>&gt;&gt;</a>
+                <li th:classappend="${page.disabledLastPageNo()} ? 'disabled'">
+                  <a class="page" href="javascript:;" th:data-page="${page.lastPageNo}">&gt;&gt;</a>
                 </li>
               </ul>
             </div>
@@ -179,6 +188,8 @@
               </div>
             </div>
           </div>
+          <!-- paging -->
+
         </div>
       </div>
       <!-- フッター -->

@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.ui.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +31,15 @@ public class TableController {
     req.getParameterMap().forEach((k,v) -> {
       log.info("***req*** name:{} value:{}", k, Arrays.toString(v));
     });
-    model.addAttribute("items", getItems(getPage(req)));
+    int pageNo = getPage(req);
+    int allDataNum = 17;
+    model.addAttribute("items", getItems(pageNo));
+
+    Page page = new Page(allDataNum, 5, pageNo);
+    model.addAttribute("page", page);
+    String info = String.format("first:%d, last:%d, current:%d, all:%d", page.getFirstPageNo(), page.getLastPageNo(), page.getCurrentPageNo(), page.getAllPageNum());
+    model.addAttribute("pageInfo", info);
+
     return "table/index";
   }
 
@@ -46,7 +55,7 @@ public class TableController {
 
   private int getPage(HttpServletRequest req) {
     String _page = req.getParameter("_page");
-    int page = 0;
+    int page = 1;
     if (_page != null && _page.length() > 0) {
       page = Integer.parseInt(_page);
     }
